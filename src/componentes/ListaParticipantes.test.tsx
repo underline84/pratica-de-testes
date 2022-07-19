@@ -16,7 +16,7 @@ describe('uma lista vazia de participantes', () => {
     })
     test('deve ser renderizada sem elementos', () => {
         render(<RecoilRoot>
-            <ListaParticipantes/>
+            <ListaParticipantes />
         </RecoilRoot>)
     
         const itens = screen.queryAllByRole('listitem')
@@ -31,7 +31,7 @@ describe('uma lista preenchida de participantes', () => {
     })
     test('deve ser renderizada sem elementos', () => {
         render(<RecoilRoot>
-            <ListaParticipantes/>
+            <ListaParticipantes />
         </RecoilRoot>)
     
         const itens = screen.queryAllByRole('listitem')

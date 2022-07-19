@@ -3,28 +3,21 @@ import React from "react";
 import { RecoilRoot } from "recoil";
 import Formulario from "./Formulario";
 
-describe('o comportamento do Formulario.tsx', () => {
-    
-    test('quando o input está vazio, novos participantes não podem ser adicionados', () => {
 
+describe('o comportamento do Formulario.tsx', () => {
+    test('quando o input está vazio, novos participantes não podem ser adicionados', () => {
         render(
             <RecoilRoot>
                 <Formulario />
             </RecoilRoot>)
-    
         // encontrar no DOM o input
         const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
-    
         // encontrar o botão
         const botao = screen.getByRole('button')
-    
         // garantir que o input esteja no documento
         expect(input).toBeInTheDocument()
-    
         // garantir que o botão esteja desabilitado
         expect(botao).toBeDisabled()
-    
-    
     })
     
     test('adicionar um participante caso exista um nome preenchido', () => {
@@ -35,7 +28,6 @@ describe('o comportamento do Formulario.tsx', () => {
     
         // encontrar no DOM o input
         const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
-    
         // encontrar o botão
         const botao = screen.getByRole('button')
     
@@ -51,7 +43,6 @@ describe('o comportamento do Formulario.tsx', () => {
     
         // garantir que o input esteja com o foco ativo
         expect(input).toHaveFocus()
-    
         // garantir que o input não tenha um valor
         expect(input).toHaveValue("")
     })
@@ -61,10 +52,8 @@ describe('o comportamento do Formulario.tsx', () => {
             <RecoilRoot>
                 <Formulario />
             </RecoilRoot>)
-    
         const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
         const botao = screen.getByRole('button')
-    
         fireEvent.change(input, {
             target: {
                 value: 'Ana Catarina'
@@ -89,10 +78,8 @@ describe('o comportamento do Formulario.tsx', () => {
             <RecoilRoot>
                 <Formulario />
             </RecoilRoot>)
-    
         const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
         const botao = screen.getByRole('button')
-    
         fireEvent.change(input, {
             target: {
                 value: 'Ana Catarina'
@@ -105,18 +92,16 @@ describe('o comportamento do Formulario.tsx', () => {
             }
         })
         fireEvent.click(botao)
-    
         let mensagemDeErro = screen.queryByRole('alert')
         expect(mensagemDeErro).toBeInTheDocument()
     
         act(() => {
             jest.runAllTimers()
-        })
-        
+        });
     
         mensagemDeErro = screen.queryByRole('alert')
         expect(mensagemDeErro).toBeNull()
     })
-    
 })
+
 
